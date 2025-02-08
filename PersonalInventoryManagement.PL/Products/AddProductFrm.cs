@@ -1,6 +1,7 @@
 ﻿using PersonalInventoryManagement.BL.Helper;
 using PersonalInventoryManagement.BL.Interface;
 using PersonalInventoryManagement.BL.Repository;
+using PersonalInventoryManagement.DAL;
 using PersonalInventoryManagement.DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,16 @@ namespace PersonalInventoryManagement.PL.Category
     public partial class AddProductFrm : Form
     {
         private readonly CategoryRepository _categoryRepository;
-        public event Action<List<PersonalInventoryManagement.DAL.Entities.Category>> OnCategoryAdded;
+        public event Action<List<DAL.Entities.Product>> OnProductAdded;
         private readonly ProductRepository _productRepository;
-        public AddProductFrm()
+        private readonly User _user;
+        public AddProductFrm(User user)
         {
             InitializeComponent();
             _categoryRepository = new CategoryRepository();
             _productRepository = new ProductRepository();
             pictureBox1.Visible = false;
+            _user = user;
         }
 
         #region Upload Image
@@ -60,8 +63,6 @@ namespace PersonalInventoryManagement.PL.Category
 
         #region Add Product
 
-        #region Add Product
-
         private void button4_Click(object sender, EventArgs e)
         {
             // Validate product name
@@ -86,7 +87,7 @@ namespace PersonalInventoryManagement.PL.Category
             }
 
             // Validate expire date
-            if (!DateTime.TryParse(txt_expireDate.Text, out DateTime expireDate))
+            if (!DateTime.TryParse(dtp_expiredate.Text, out DateTime expireDate))
             {
                 MessageBox.Show("Please enter a valid expiration date");
                 return;
@@ -105,25 +106,22 @@ namespace PersonalInventoryManagement.PL.Category
             }
 
             // Validate category selection
-            if (!int.TryParse(comboBox_category.SelectedValue?.ToString(), out int categoryId))
+            if (!int.TryParse(comboBox2.SelectedValue?.ToString(), out int categoryId))
             {
                 MessageBox.Show("Please select a valid category");
                 return;
             }
 
-            // Assuming the UserId is retrieved from the logged-in session
-            int userId = LoggedInUser.Id; // Replace with the actual method to get the current user ID
-
             // Create a new Product object and set its properties
-            PersonalInventoryManagement.DAL.Entities.Product product = new PersonalInventoryManagement.DAL.Entities.Product
+            DAL.Entities.Product product = new DAL.Entities.Product
             {
                 Name = txt_name.Text,
                 Price = price,
                 Quantity = quantity,
                 ExpireDate = expireDate,
                 ImageURL = ImageUrl,
-                UserId = userId,
-                CategoryId = categoryId
+                CategoryId = categoryId,
+                UserId = _user.Id
             };
 
             // Call the Add method to save the product to the database
@@ -139,9 +137,6 @@ namespace PersonalInventoryManagement.PL.Category
                 MessageBox.Show($"Error adding product: {ex.Message}");
             }
         }
-
-        #endregion
-
 
         #endregion
 
@@ -165,11 +160,33 @@ namespace PersonalInventoryManagement.PL.Category
 
         #endregion
 
+
+        #region Form Load
+
         private void AddProductFrm_Load(object sender, EventArgs e)
         {
+            dtp_expiredate.Value = DateTime.Today;
+            dtp_expiredate.MinDate = DateTime.Today;
             comboBox2.DataSource = _categoryRepository.GetAll().ToList();
             comboBox2.DisplayMember = "Name";
             comboBox2.ValueMember = "Id";
         }
+
+        #endregion
+
+
+        #region Add Category
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddCategoryFrm addCategoryFrm = new AddCategoryFrm();
+            addCategoryFrm.ShowDialog();
+            comboBox2.DataSource = _categoryRepository.GetAll().ToList();
+            comboBox2.DisplayMember = "Name";
+            comboBox2.ValueMember = "Id";
+        }
+            
+        #endregion
+
     }
 }

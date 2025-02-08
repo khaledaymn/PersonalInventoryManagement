@@ -27,9 +27,6 @@ namespace PersonalInventoryManagement.BL.Repository
             if (product == null)
                 throw new ArgumentNullException(nameof(product), "Product cannot be null.");
 
-            if (string.IsNullOrWhiteSpace(product.Name))
-                throw new ArgumentException("Product name is required.", nameof(product));
-
             try
             {
                 _context.Products.Add(product);

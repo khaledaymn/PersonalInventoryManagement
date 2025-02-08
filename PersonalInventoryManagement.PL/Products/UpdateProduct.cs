@@ -1,6 +1,7 @@
 ﻿using PersonalInventoryManagement.BL.Helper;
 using PersonalInventoryManagement.BL.Interface;
 using PersonalInventoryManagement.BL.Repository;
+using PersonalInventoryManagement.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,47 +17,54 @@ namespace PersonalInventoryManagement.PL.Images.Categories
     public partial class UpdateProduct : Form
     {
         private readonly int _id;
+        private readonly User _user;
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IProductRepository _productRepository;
         private readonly FileManager imageManager;
-        public event Action<IEnumerable<PersonalInventoryManagement.DAL.Entities.Category>> OnCategoryUpdated;
-        public UpdateProduct(int id)
+        public event Action<IEnumerable<DAL.Entities.Product>> OnProductUpdated;
+        public UpdateProduct(int ProductId,User user)
         {
             InitializeComponent();
-            _id = id;
+            _id = ProductId;
+            _user = user;
             _categoryRepository = new CategoryRepository();
+            _productRepository = new ProductRepository();
             imageManager = new FileManager();
         }
 
         #region Form Load
 
-        private void UpdateCategory_Load(object sender, EventArgs e)
+        private void UpdateProduct_Load(object sender, EventArgs e)
         {
             if (_id <= 0)
             {
-                MessageBox.Show("No data is selected to edit. Select a row and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No product is selected to edit. Select a row and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            var categoryn = _categoryRepository.Filter(c => c.Id == _id).ToList();
+            var productList = _productRepository.Filter(p => p.Id == _id).ToList();
 
-            if (categoryn.Count == 0)
+            if (productList.Count == 0)
             {
-                MessageBox.Show("No category found with the selected ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No product found with the selected ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
 
-            var category = categoryn[0];
-            txt_name.Text = category.Name;
-            ImageUrl = category.ImageURL;
+            var product = productList[0];
+            txt_name.Text = product.Name;
+            txt_price.Text = product.Price.ToString();
+            txt_quantity.Text = product.Quantity.ToString();
+            dtp_expiredate.Value = product.ExpireDate;
+            ImageUrl = product.ImageURL;
 
             try
             {
-                if (!string.IsNullOrEmpty(category.ImageURL) && File.Exists(category.ImageURL))
+                if (!string.IsNullOrEmpty(product.ImageURL) && File.Exists(product.ImageURL))
                 {
                     // Load the image into a MemoryStream to avoid file locking
-                    using (FileStream stream = new FileStream(category.ImageURL, FileMode.Open, FileAccess.Read))
+                    using (FileStream stream = new FileStream(product.ImageURL, FileMode.Open, FileAccess.Read))
                     {
                         pictureBox1.Image = Image.FromStream(stream);
                     }
@@ -70,12 +78,13 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             catch (Exception ex)
             {
                 MessageBox.Show("Error loading image: " + ex.Message, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                pictureBox1.Image = Image.FromFile("DefultImage.jpg");
+                pictureBox1.Image = Image.FromFile("DefaultImage.jpg");
                 pictureBox3.Visible = false;
             }
 
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
+
 
         #endregion
 
@@ -160,26 +169,50 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             {
                 if (_id <= 0)
                 {
-                    MessageBox.Show("No category is selected to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No product is selected to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Create a new category object with updated values
-            
-                PersonalInventoryManagement.DAL.Entities.Category updatedCategory = new PersonalInventoryManagement.DAL.Entities.Category
+                if (string.IsNullOrWhiteSpace(txt_name.Text))
+                {
+                    MessageBox.Show("Product name is required.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!decimal.TryParse(txt_price.Text, out decimal price) || price <= 0)
+                {
+                    MessageBox.Show("Enter a valid price greater than 0.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!int.TryParse(txt_quantity.Text, out int quantity) || quantity < 0)
+                {
+                    MessageBox.Show("Enter a valid quantity (0 or more).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (dtp_expiredate.Value < DateTime.Today)
+                {
+                    MessageBox.Show("Expire date must be in the future.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+               DAL.Entities.Product updatedProduct = new DAL.Entities.Product
                 {
                     Id = _id,
                     Name = txt_name.Text.Trim(),
+                    Price = price,
+                    Quantity = quantity,
+                    UserId = _user.Id,
+                    ExpireDate = dtp_expiredate.Value,
                     ImageURL = ImageUrl
                 };
 
-                // Call the BL method to update the category
+                var result = _productRepository.Update(updatedProduct);
 
-                var result = _categoryRepository.Update(updatedCategory);
-
-                MessageBox.Show("Category updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                OnCategoryUpdated?.Invoke(_categoryRepository.GetAll());
+                OnProductUpdated?.Invoke(_productRepository.GetAll());
             }
             catch (Exception ex)
             {
@@ -187,7 +220,9 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             }
         }
 
+
         #endregion
+
 
     }
 

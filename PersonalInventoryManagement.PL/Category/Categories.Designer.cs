@@ -53,6 +53,10 @@
             label1 = new Label();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
+            panel3 = new Panel();
+            button8 = new Button();
+            button7 = new Button();
+            panel1 = new Panel();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btn_menu).BeginInit();
             sidebar.SuspendLayout();
@@ -61,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -352,11 +357,57 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(button8);
+            panel3.Controls.Add(button7);
+            panel3.Location = new Point(694, 105);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(210, 114);
+            panel3.TabIndex = 16;
+            // 
+            // button8
+            // 
+            button8.FlatAppearance.BorderColor = Color.Black;
+            button8.FlatAppearance.BorderSize = 3;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button8.Location = new Point(2, 59);
+            button8.Name = "button8";
+            button8.Size = new Size(205, 46);
+            button8.TabIndex = 16;
+            button8.Text = "Log Out";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.FlatAppearance.BorderColor = Color.Black;
+            button7.FlatAppearance.BorderSize = 3;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button7.Location = new Point(2, 7);
+            button7.Name = "button7";
+            button7.Size = new Size(205, 46);
+            button7.TabIndex = 15;
+            button7.Text = "profile";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(692, 103);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(214, 118);
+            panel1.TabIndex = 15;
+            // 
             // Categories
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             ClientSize = new Size(921, 607);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
             Controls.Add(pictureBox4);
             Controls.Add(label1);
             Controls.Add(pictureBox3);
@@ -382,6 +433,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -409,5 +461,9 @@
         private Label label1;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private Panel panel3;
+        private Button button8;
+        private Button button7;
+        private Panel panel1;
     }
 }

@@ -51,12 +51,16 @@
             button5 = new Button();
             panel5 = new Panel();
             comboBox2 = new ComboBox();
+            dtp_expiredate = new DateTimePicker();
+            panel6 = new Panel();
+            label7 = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // button2
@@ -100,7 +104,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(218, 182, 73);
-            label1.Location = new Point(203, 56);
+            label1.Location = new Point(203, 45);
             label1.Name = "label1";
             label1.Size = new Size(372, 50);
             label1.TabIndex = 3;
@@ -122,7 +126,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(28, 139);
+            label2.Location = new Point(31, 125);
             label2.Name = "label2";
             label2.Size = new Size(162, 25);
             label2.TabIndex = 5;
@@ -132,7 +136,7 @@
             // 
             panel1.BackColor = Color.FromArgb(218, 182, 73);
             panel1.Controls.Add(txt_name);
-            panel1.Location = new Point(213, 129);
+            panel1.Location = new Point(216, 115);
             panel1.Name = "panel1";
             panel1.Size = new Size(470, 47);
             panel1.TabIndex = 6;
@@ -150,9 +154,9 @@
             button3.ForeColor = Color.Black;
             button3.Image = (Image)resources.GetObject("button3.Image");
             button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(213, 417);
+            button3.Location = new Point(206, 475);
             button3.Name = "button3";
-            button3.Size = new Size(291, 75);
+            button3.Size = new Size(477, 100);
             button3.TabIndex = 7;
             button3.Text = "Choose Image";
             button3.UseVisualStyleBackColor = true;
@@ -162,7 +166,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(63, 429);
+            label3.Location = new Point(77, 512);
             label3.Name = "label3";
             label3.Size = new Size(71, 25);
             label3.TabIndex = 8;
@@ -176,7 +180,7 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button4.ForeColor = Color.Black;
-            button4.Location = new Point(321, 647);
+            button4.Location = new Point(314, 719);
             button4.Name = "button4";
             button4.Size = new Size(137, 47);
             button4.TabIndex = 9;
@@ -186,7 +190,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(280, 392);
+            pictureBox1.Location = new Point(273, 475);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(332, 119);
             pictureBox1.TabIndex = 10;
@@ -196,7 +200,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(79, 234);
+            label4.Location = new Point(82, 220);
             label4.Name = "label4";
             label4.Size = new Size(61, 25);
             label4.TabIndex = 11;
@@ -218,7 +222,7 @@
             // 
             panel3.BackColor = Color.FromArgb(218, 182, 73);
             panel3.Controls.Add(txt_price);
-            panel3.Location = new Point(213, 224);
+            panel3.Location = new Point(216, 210);
             panel3.Name = "panel3";
             panel3.Size = new Size(470, 47);
             panel3.TabIndex = 8;
@@ -227,7 +231,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(63, 327);
+            label5.Location = new Point(66, 313);
             label5.Name = "label5";
             label5.Size = new Size(93, 25);
             label5.TabIndex = 12;
@@ -237,7 +241,7 @@
             // 
             panel4.BackColor = Color.FromArgb(218, 182, 73);
             panel4.Controls.Add(txt_quantity);
-            panel4.Location = new Point(213, 316);
+            panel4.Location = new Point(216, 302);
             panel4.Name = "panel4";
             panel4.Size = new Size(470, 47);
             panel4.TabIndex = 9;
@@ -258,7 +262,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(69, 556);
+            label6.Location = new Point(62, 639);
             label6.Name = "label6";
             label6.Size = new Size(100, 25);
             label6.TabIndex = 14;
@@ -272,18 +276,19 @@
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button5.ForeColor = Color.Black;
-            button5.Location = new Point(591, 552);
+            button5.Location = new Point(584, 635);
             button5.Name = "button5";
             button5.Size = new Size(139, 37);
             button5.TabIndex = 15;
             button5.Text = "Add Category";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(218, 182, 73);
             panel5.Controls.Add(comboBox2);
-            panel5.Location = new Point(213, 548);
+            panel5.Location = new Point(206, 631);
             panel5.Name = "panel5";
             panel5.Size = new Size(362, 43);
             panel5.TabIndex = 31;
@@ -298,12 +303,42 @@
             comboBox2.Size = new Size(356, 33);
             comboBox2.TabIndex = 28;
             // 
+            // dtp_expiredate
+            // 
+            dtp_expiredate.CustomFormat = "dd/MM/yyyy";
+            dtp_expiredate.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtp_expiredate.Location = new Point(3, 3);
+            dtp_expiredate.Name = "dtp_expiredate";
+            dtp_expiredate.Size = new Size(464, 30);
+            dtp_expiredate.TabIndex = 32;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(218, 182, 73);
+            panel6.Controls.Add(dtp_expiredate);
+            panel6.Location = new Point(216, 399);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(469, 36);
+            panel6.TabIndex = 32;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(53, 402);
+            label7.Name = "label7";
+            label7.Size = new Size(118, 25);
+            label7.TabIndex = 33;
+            label7.Text = "ExpireDate";
+            // 
             // AddProductFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(742, 730);
+            ClientSize = new Size(742, 782);
+            Controls.Add(label7);
+            Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(button5);
             Controls.Add(label6);
@@ -333,6 +368,7 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -361,5 +397,8 @@
         private Button button5;
         private Panel panel5;
         private ComboBox comboBox2;
+        private DateTimePicker dtp_expiredate;
+        private Panel panel6;
+        private Label label7;
     }
 }

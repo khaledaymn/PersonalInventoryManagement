@@ -53,6 +53,11 @@
             label1 = new Label();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
+            panel1 = new Panel();
+            panel3 = new Panel();
+            button8 = new Button();
+            button7 = new Button();
+            timer2 = new System.Windows.Forms.Timer(components);
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btn_menu).BeginInit();
             sidebar.SuspendLayout();
@@ -61,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -160,6 +166,7 @@
             button6.Text = "       Reportes";
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button4
             // 
@@ -181,6 +188,7 @@
             button4.Text = "       Products";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -202,6 +210,7 @@
             button3.Text = "       Dashboard";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button5
             // 
@@ -223,6 +232,7 @@
             button5.Text = "       Categories";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // timer1
             // 
@@ -323,41 +333,97 @@
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe Script", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(1022, 64);
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(1038, 65);
             label1.Name = "label1";
-            label1.Size = new Size(155, 30);
+            label1.Size = new Size(131, 23);
             label1.TabIndex = 11;
             label1.Text = "Khaled Ayman";
+            label1.Click += label1_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(972, 56);
+            pictureBox3.Location = new Point(979, 50);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(45, 46);
+            pictureBox3.Size = new Size(55, 57);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 10;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += label1_Click;
             // 
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.White;
             pictureBox4.Cursor = Cursors.Hand;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(1169, 71);
+            pictureBox4.Location = new Point(1169, 69);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(20, 20);
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += label1_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Black;
+            panel1.Location = new Point(978, 112);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(214, 118);
+            panel1.TabIndex = 13;
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(button8);
+            panel3.Controls.Add(button7);
+            panel3.Location = new Point(980, 114);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(210, 114);
+            panel3.TabIndex = 14;
+            // 
+            // button8
+            // 
+            button8.FlatAppearance.BorderColor = Color.Black;
+            button8.FlatAppearance.BorderSize = 3;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button8.Location = new Point(2, 59);
+            button8.Name = "button8";
+            button8.Size = new Size(205, 46);
+            button8.TabIndex = 16;
+            button8.Text = "Log Out";
+            button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
+            // 
+            // button7
+            // 
+            button7.FlatAppearance.BorderColor = Color.Black;
+            button7.FlatAppearance.BorderSize = 3;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button7.Location = new Point(2, 7);
+            button7.Name = "button7";
+            button7.Size = new Size(205, 46);
+            button7.TabIndex = 15;
+            button7.Text = "profile";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
+            // timer2
+            // 
+            timer2.Interval = 10;
+            timer2.Tick += timer2_Tick;
             // 
             // Products
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             ClientSize = new Size(1204, 607);
+            Controls.Add(panel3);
+            Controls.Add(panel1);
             Controls.Add(pictureBox4);
             Controls.Add(label1);
             Controls.Add(pictureBox3);
@@ -383,6 +449,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -410,5 +477,10 @@
         private Label label1;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private Panel panel1;
+        private Panel panel3;
+        private Button button8;
+        private Button button7;
+        private System.Windows.Forms.Timer timer2;
     }
 }

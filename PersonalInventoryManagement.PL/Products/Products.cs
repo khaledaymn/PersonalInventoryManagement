@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -22,12 +23,16 @@ namespace PersonalInventoryManagement.PL
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IProductRepository _productRepository;
-        public Products()
+        private readonly User _user;
+        public Products(User user)
         {
             InitializeComponent();
+            _user = user;
             _categoryRepository = new CategoryRepository();
             _productRepository = new ProductRepository();
+            
         }
+
 
         #region Form Load
 
@@ -36,6 +41,8 @@ namespace PersonalInventoryManagement.PL
             txt_search.Padding = new Padding(20, 0, 0, 0);
             // Call LoadCategories when the form loads
             LoadProducts(_productRepository.GetAll().ToList());
+            panel1.Height = 0;
+            panel3.Height = 0;
         }
 
         #endregion
@@ -76,7 +83,6 @@ namespace PersonalInventoryManagement.PL
             DataGridViewImageColumn imgColumn = new DataGridViewImageColumn
             {
                 Name = "Image",
-                HeaderText = "Product Image",
                 ImageLayout = DataGridViewImageCellLayout.Zoom
             };
             dataGridView1.Columns.Add(imgColumn);
@@ -155,7 +161,7 @@ namespace PersonalInventoryManagement.PL
 
         bool sidebarExpand = true;
         int sidebarTargetWidth;
-        int step = 10; // Animation step size
+        int step = 15; // Animation step size
 
         // Define the two sizes and positions for the DataGridView
         Size expandedSize = new Size(867, 407);
@@ -198,9 +204,9 @@ namespace PersonalInventoryManagement.PL
                 }
                 else
                 {
+                    pictureBox2.Visible = true; // Show icon
                     sidebar.Width = sidebarTargetWidth; // Ensure exact width
                     sidebarExpand = true;
-                    pictureBox2.Visible = true; // Show icon
                     timer1.Stop();
                 }
             }
@@ -256,14 +262,13 @@ namespace PersonalInventoryManagement.PL
             if (!string.IsNullOrEmpty(searchQuery))
             {
                 var filteredCategories = _productRepository.Filter(c => c.Name.ToLower().Contains(searchQuery.ToLower()));
-
-                //LoadCategories(filteredCategories.ToList());
+                LoadProducts(filteredCategories.ToList());
             }
             else
             {
                 // If search query is empty, show all categories
                 var allCategories = _productRepository.GetAll().ToList();
-                //LoadCategories(allCategories);
+                LoadProducts(allCategories);
             }
         }
 
@@ -279,12 +284,13 @@ namespace PersonalInventoryManagement.PL
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            AddProductFrm addProductFrm = new AddProductFrm();
-            //addProductFrm.OnProductAdded += LoadProducts;
+            AddProductFrm addProductFrm = new AddProductFrm(_user);
+            addProductFrm.OnProductAdded += LoadProducts;
             addProductFrm.ShowDialog();
         }
 
         #endregion
+
 
         #region Update
 
@@ -301,7 +307,7 @@ namespace PersonalInventoryManagement.PL
             if (dataGridView1.SelectedRows[0].Cells[0].Value != null &&
                 int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out int id))
             {
-                UpdateProduct updateProduct = new UpdateProduct(id);
+                UpdateProduct updateProduct = new UpdateProduct(id, _user);
                 updateProduct.ShowDialog();
                 //updateProduct.OnProductUpdated += LoadProducts;
             }
@@ -314,35 +320,44 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
         #region Delete
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            // Ensure a row is selected
             if (dataGridView1.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a product to delete.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Try to retrieve the ID safely
             if (dataGridView1.SelectedRows[0].Cells[0].Value != null &&
                 int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out int id))
             {
+                var product = _productRepository.Filter(p => p.Id == id).FirstOrDefault();
+
+                if (product == null)
+                {
+                    MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var confirmResult = MessageBox.Show("Are you sure you want to delete this product?", "Confirm Deletion",
                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    var image = _productRepository.Filter(p => p.Id == id).FirstOrDefault()?.ImageURL;
                     bool isDeleted = _productRepository.Delete(id);
 
                     if (isDeleted)
                     {
-                        RemoveImage(image);
+                        if (!string.IsNullOrEmpty(product.ImageURL))
+                        {
+                            RemoveImage(product.ImageURL);
+                        }
+
                         MessageBox.Show("Product deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Fetch updated list and refresh DataGridView
-                        //LoadProducts(_productRepository.GetAll().ToList());
+                        LoadProducts(_productRepository.GetAll().ToList());
                     }
                     else
                     {
@@ -357,6 +372,7 @@ namespace PersonalInventoryManagement.PL
         }
 
         #endregion
+
 
         #region Remove Image
 
@@ -380,5 +396,111 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
+        #region Dashboard
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
+
+
+        #region Products
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Categories
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Reports
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Profile
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Log out
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+            this.Close();
+        }
+
+        #endregion
+
+
+        #region Open profile window
+
+        bool isExpanded = false;
+        int panelMaxHeight = 118; 
+        int step1 = 5; 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (!timer2.Enabled) 
+            {
+                isExpanded = !isExpanded;
+                timer2.Start();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (isExpanded)
+            {
+                if (panel1.Height < panelMaxHeight)
+                {
+                    panel1.Height += step1;
+                    if(panel3.Height <= 114)
+                        panel3.Height += step1;
+                }
+                else
+                    timer2.Stop();
+            }
+            else
+            {
+                if (panel1.Height > 0)
+                {
+                    panel1.Height -= step;
+                    panel3.Height -= step;
+                }
+                else
+                    timer2.Stop();
+            }
+        }
+
+        #endregion
+
     }
+
 }
