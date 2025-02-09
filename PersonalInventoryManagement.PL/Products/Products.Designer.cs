@@ -151,6 +151,7 @@
             // 
             button6.BackColor = Color.Black;
             button6.BackgroundImageLayout = ImageLayout.None;
+            button6.Cursor = Cursors.Hand;
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatAppearance.MouseDownBackColor = Color.White;
             button6.FlatStyle = FlatStyle.Flat;
@@ -172,6 +173,7 @@
             // 
             button4.BackColor = Color.Black;
             button4.BackgroundImageLayout = ImageLayout.None;
+            button4.Cursor = Cursors.Hand;
             button4.FlatAppearance.BorderColor = Color.FromArgb(218, 182, 73);
             button4.FlatAppearance.BorderSize = 3;
             button4.FlatAppearance.MouseDownBackColor = Color.White;
@@ -194,6 +196,7 @@
             // 
             button3.BackColor = Color.Black;
             button3.BackgroundImageLayout = ImageLayout.None;
+            button3.Cursor = Cursors.Hand;
             button3.FlatAppearance.BorderColor = Color.FromArgb(218, 182, 73);
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatAppearance.MouseDownBackColor = Color.White;
@@ -216,6 +219,7 @@
             // 
             button5.BackColor = Color.Black;
             button5.BackgroundImageLayout = ImageLayout.None;
+            button5.Cursor = Cursors.Hand;
             button5.FlatAppearance.BorderColor = Color.FromArgb(218, 182, 73);
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatAppearance.MouseDownBackColor = Color.White;
@@ -265,6 +269,7 @@
             // 
             // btn_search
             // 
+            btn_search.Cursor = Cursors.Hand;
             btn_search.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_search.ForeColor = Color.Black;
             btn_search.Location = new Point(721, 128);
@@ -289,6 +294,7 @@
             // 
             // btn_add
             // 
+            btn_add.Cursor = Cursors.Hand;
             btn_add.FlatAppearance.BorderColor = Color.Black;
             btn_add.FlatAppearance.BorderSize = 3;
             btn_add.FlatStyle = FlatStyle.Flat;
@@ -303,6 +309,7 @@
             // 
             // btn_update
             // 
+            btn_update.Cursor = Cursors.Hand;
             btn_update.FlatAppearance.BorderColor = Color.Black;
             btn_update.FlatAppearance.BorderSize = 3;
             btn_update.FlatStyle = FlatStyle.Flat;
@@ -317,6 +324,7 @@
             // 
             // btn_delete
             // 
+            btn_delete.Cursor = Cursors.Hand;
             btn_delete.FlatAppearance.BorderColor = Color.Black;
             btn_delete.FlatAppearance.BorderSize = 3;
             btn_delete.FlatStyle = FlatStyle.Flat;
@@ -386,6 +394,7 @@
             // 
             // button8
             // 
+            button8.Cursor = Cursors.Hand;
             button8.FlatAppearance.BorderColor = Color.Black;
             button8.FlatAppearance.BorderSize = 3;
             button8.FlatStyle = FlatStyle.Flat;
@@ -400,6 +409,7 @@
             // 
             // button7
             // 
+            button7.Cursor = Cursors.Hand;
             button7.FlatAppearance.BorderColor = Color.Black;
             button7.FlatAppearance.BorderSize = 3;
             button7.FlatStyle = FlatStyle.Flat;

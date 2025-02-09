@@ -22,7 +22,8 @@ namespace PersonalInventoryManagement.PL.Images.Categories
         private readonly IProductRepository _productRepository;
         private readonly FileManager imageManager;
         public event Action<IEnumerable<DAL.Entities.Product>> OnProductUpdated;
-        public UpdateProduct(int ProductId,User user)
+      
+        public UpdateProduct(int ProductId, User user)
         {
             InitializeComponent();
             _id = ProductId;
@@ -31,6 +32,7 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             _productRepository = new ProductRepository();
             imageManager = new FileManager();
         }
+
 
         #region Form Load
 
@@ -58,6 +60,10 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             txt_quantity.Text = product.Quantity.ToString();
             dtp_expiredate.Value = product.ExpireDate;
             ImageUrl = product.ImageURL;
+            comboBox1.DataSource = _categoryRepository.GetAll().ToList();
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Id";
+            comboBox1.SelectedValue = _categoryRepository.Filter(c => c.Id == product.CategoryId).FirstOrDefault().Id;
 
             try
             {
@@ -197,7 +203,7 @@ namespace PersonalInventoryManagement.PL.Images.Categories
                     return;
                 }
 
-               DAL.Entities.Product updatedProduct = new DAL.Entities.Product
+                DAL.Entities.Product updatedProduct = new DAL.Entities.Product
                 {
                     Id = _id,
                     Name = txt_name.Text.Trim(),
@@ -205,7 +211,8 @@ namespace PersonalInventoryManagement.PL.Images.Categories
                     Quantity = quantity,
                     UserId = _user.Id,
                     ExpireDate = dtp_expiredate.Value,
-                    ImageURL = ImageUrl
+                    ImageURL = ImageUrl,
+                    CategoryId = (int)comboBox1.SelectedValue
                 };
 
                 var result = _productRepository.Update(updatedProduct);
@@ -220,10 +227,7 @@ namespace PersonalInventoryManagement.PL.Images.Categories
             }
         }
 
-
-        #endregion
-
-
+#endregion
     }
 
 }

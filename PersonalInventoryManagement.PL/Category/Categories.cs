@@ -378,5 +378,109 @@ namespace PersonalInventoryManagement.PL
         }
 
         #endregion
+
+        #region Dashboard
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #endregion
+
+
+        #region Products
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Categories
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Reports
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Profile
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
+        #region Log out
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
+            this.Close();
+        }
+
+        #endregion
+
+
+        #region Open profile window
+
+        bool isExpanded = false;
+        int panelMaxHeight = 118;
+        int step1 = 5;
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (!timer2.Enabled)
+            {
+                isExpanded = !isExpanded;
+                timer2.Start();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (isExpanded)
+            {
+                if (panel1.Height < panelMaxHeight)
+                {
+                    panel1.Height += step1;
+                    if (panel3.Height <= 114)
+                        panel3.Height += step1;
+                }
+                else
+                    timer2.Stop();
+            }
+            else
+            {
+                if (panel1.Height > 0)
+                {
+                    panel1.Height -= step;
+                    panel3.Height -= step;
+                }
+                else
+                    timer2.Stop();
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿using PersonalInventoryManagement.DAL.Entities;
+﻿using PersonalInventoryManagement.BL.Interface;
+using PersonalInventoryManagement.BL.Repository;
+using PersonalInventoryManagement.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,16 +11,19 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PersonalInventoryManagement.PL
 {
     public partial class Dashboard : Form
     {
         private readonly User _user;
+        private readonly IProductRepository _productRepository;
         public Dashboard(User user)
         {
             InitializeComponent();
             _user = user;
+            _productRepository = new ProductRepository();
         }
 
         #region Close window
@@ -51,9 +56,139 @@ namespace PersonalInventoryManagement.PL
 
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
-            //pictureBox1.Image = Image.FromFile(_user.ImageURL == "" ? "": _user.ImageURL);
+            chart1.Series.Clear(); 
+
+            Series series1 = new Series
+            {
+                Name = "Inventory",
+                ChartType = SeriesChartType.Pie
+            };
+
+            series1.Points.Add(60).Label = "60%";  // Good
+            series1.Points.Add(15).Label = "15%";  // Expiring Soon
+            series1.Points.Add(25).Label = "25%";  // Expired
+
+            chart1.Series.Add(series1);
+
+            series1.Points[0].Color = System.Drawing.Color.SeaGreen;   // Good
+            series1.Points[1].Color = System.Drawing.Color.DarkOrange;  // Expiring Soon
+            series1.Points[2].Color = System.Drawing.Color.FromArgb(209, 52, 56);     // Expired
+
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = System.Drawing.Color.White; 
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12, System.Drawing.FontStyle.Bold); 
+
+            chart1.Legends.Clear();
+
+            foreach (var point in series1.Points)
+            {
+                point.Label = "#PERCENT{P0}";  
+                point.LabelForeColor = System.Drawing.Color.Black;  
+            }
+
+            chart1.ChartAreas[0].BackColor = System.Drawing.Color.Transparent;
+            chart1.BackColor = System.Drawing.Color.Transparent;
+
+            LoadData(_productRepository.GetAll().ToList());
         }
 
+
+
+        #region Data Grid View
+
+        private void LoadData(IEnumerable<DAL.Entities.Product> products)
+        {
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Gray;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 14);
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 15, FontStyle.Bold);
+            dataGridView1.ColumnHeadersHeight = 35;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
+
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns.Add("Name", "Product Name");
+            dataGridView1.Columns.Add("Price", "Price");
+            dataGridView1.Columns.Add("ExpireDate", "Expire Date");
+            dataGridView1.Columns.Add("Category", "Category");
+
+            DataGridViewImageColumn imgColumn = new DataGridViewImageColumn
+            {
+                Name = "Image",
+                HeaderText = "Product Image",
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            };
+            dataGridView1.Columns.Add(imgColumn);
+
+            DataGridViewImageColumn statusColumn = new DataGridViewImageColumn
+            {
+                Name = "Status",
+                HeaderText = "Status",
+                ImageLayout = DataGridViewImageCellLayout.Normal
+            };
+            dataGridView1.Columns.Add(statusColumn);
+
+            dataGridView1.RowTemplate.Height = 80;
+            dataGridView1.DefaultCellStyle.Padding = new Padding(5);
+
+            Image checkIcon = Image.FromFile("check.png");     // ✅
+            Image warningIcon = Image.FromFile("warning.png"); // ⚠️
+            Image errorIcon = Image.FromFile("error.png");     // ❌
+
+            foreach (var product in products)
+            {
+                Image productImg = null;
+                string imagePath = product.ImageURL;
+
+                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
+                {
+                    using (FileStream stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        productImg = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    productImg = Image.FromFile("DefaultImage.jpg");
+                }
+
+                Image statusImg = null;
+                DateTime today = DateTime.Today;
+
+                if (product.ExpireDate < today)
+                {
+                    statusImg = errorIcon;
+                }
+                else if ((product.ExpireDate - today).TotalDays <= 7)
+                {
+                    statusImg = warningIcon;
+                }
+                else
+                {
+                    statusImg = checkIcon;
+                }
+                dataGridView1.Rows.Add(product.Id, product.Name, product.Price,
+                                       product.ExpireDate.ToShortDateString(), product.Category.Name,
+                                       productImg, statusImg);
+            }
+
+            dataGridView1.Columns["Id"].Visible = false;
+
+            dataGridView1.Refresh();
+        }
+
+        #endregion
         private void button5_Click(object sender, EventArgs e)
         {
 
@@ -138,6 +273,9 @@ namespace PersonalInventoryManagement.PL
 
         }
 
-        
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

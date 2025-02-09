@@ -144,10 +144,11 @@
             // comboBox1
             // 
             comboBox1.FlatStyle = FlatStyle.Flat;
+            comboBox1.Font = new Font("Microsoft Sans Serif", 12F);
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(3, 4);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(467, 28);
+            comboBox1.Size = new Size(467, 33);
             comboBox1.TabIndex = 28;
             // 
             // txt_quantity
@@ -244,6 +245,7 @@
             button4.TabIndex = 24;
             button4.Text = "Update";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += btn_update_Click;
             // 
             // openFileDialog2
             // 
@@ -296,7 +298,7 @@
             panel5.Controls.Add(comboBox1);
             panel5.Location = new Point(208, 709);
             panel5.Name = "panel5";
-            panel5.Size = new Size(473, 36);
+            panel5.Size = new Size(473, 42);
             panel5.TabIndex = 30;
             // 
             // label3

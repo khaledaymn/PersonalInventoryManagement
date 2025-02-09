@@ -173,7 +173,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(51, 153, 255);
+            button1.BackColor = Color.FromArgb(218, 182, 73);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -188,7 +188,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.FromArgb(51, 153, 255);
+            panel6.BackColor = Color.FromArgb(218, 182, 73);
             panel6.Location = new Point(35, 308);
             panel6.Name = "panel6";
             panel6.Size = new Size(473, 2);
@@ -206,7 +206,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.FromArgb(51, 153, 255);
+            panel5.BackColor = Color.FromArgb(218, 182, 73);
             panel5.Location = new Point(35, 235);
             panel5.Name = "panel5";
             panel5.Size = new Size(473, 2);
@@ -226,7 +226,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.MenuHighlight;
+            label1.ForeColor = Color.FromArgb(218, 182, 73);
             label1.Location = new Point(125, 135);
             label1.Name = "label1";
             label1.Size = new Size(305, 45);

@@ -1,3 +1,4 @@
+using PersonalInventoryManagement.DAL.DataBase;
 using PersonalInventoryManagement.DAL.Entities;
 using PersonalInventoryManagement.PL.Category;
 using PersonalInventoryManagement.PL.Images.Categories;
@@ -12,11 +13,12 @@ namespace PersonalInventoryManagement.PL
         [STAThread]
         static void Main()
         {
-            User u = new User();
+            ApplicationDbContext context = new ApplicationDbContext();
+            User u = context.Users.Find(3);
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Products(u));
+            Application.Run(new Dashboard(u));
         }
     }
 }

@@ -57,6 +57,7 @@
             button8 = new Button();
             button7 = new Button();
             panel1 = new Panel();
+            timer2 = new System.Windows.Forms.Timer(components);
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btn_menu).BeginInit();
             sidebar.SuspendLayout();
@@ -165,6 +166,7 @@
             button6.Text = "       Reportes";
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // button4
             // 
@@ -185,6 +187,7 @@
             button4.Text = "       Products";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -206,6 +209,7 @@
             button3.Text = "       Dashboard";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button5
             // 
@@ -227,6 +231,7 @@
             button5.Text = "       Categories";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // timer1
             // 
@@ -379,6 +384,7 @@
             button8.TabIndex = 16;
             button8.Text = "Log Out";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button7
             // 
@@ -392,6 +398,7 @@
             button7.TabIndex = 15;
             button7.Text = "profile";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // panel1
             // 
@@ -400,6 +407,10 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(214, 118);
             panel1.TabIndex = 15;
+            // 
+            // timer2
+            // 
+            timer2.Tick += timer2_Tick;
             // 
             // Categories
             // 
@@ -465,5 +476,6 @@
         private Button button8;
         private Button button7;
         private Panel panel1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

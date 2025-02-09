@@ -94,7 +94,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.MenuHighlight;
+            label1.ForeColor = Color.FromArgb(218, 182, 73);
             label1.Location = new Point(198, 136);
             label1.Name = "label1";
             label1.Size = new Size(172, 45);
@@ -150,7 +150,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.FromArgb(51, 153, 255);
+            panel2.BackColor = Color.FromArgb(218, 182, 73);
             panel2.Location = new Point(45, 249);
             panel2.Name = "panel2";
             panel2.Size = new Size(473, 2);
@@ -158,7 +158,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(51, 153, 255);
+            panel3.BackColor = Color.FromArgb(218, 182, 73);
             panel3.Location = new Point(45, 322);
             panel3.Name = "panel3";
             panel3.Size = new Size(473, 2);
@@ -166,7 +166,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(51, 153, 255);
+            panel4.BackColor = Color.FromArgb(218, 182, 73);
             panel4.Location = new Point(45, 387);
             panel4.Name = "panel4";
             panel4.Size = new Size(473, 2);
@@ -174,7 +174,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.FromArgb(51, 153, 255);
+            panel5.BackColor = Color.FromArgb(218, 182, 73);
             panel5.Location = new Point(45, 456);
             panel5.Name = "panel5";
             panel5.Size = new Size(473, 2);
@@ -182,7 +182,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = Color.FromArgb(51, 153, 255);
+            panel6.BackColor = Color.FromArgb(218, 182, 73);
             panel6.Location = new Point(45, 529);
             panel6.Name = "panel6";
             panel6.Size = new Size(473, 2);
@@ -200,7 +200,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(51, 153, 255);
+            button1.BackColor = Color.FromArgb(218, 182, 73);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -218,7 +218,7 @@
             linkLabel1.ActiveLinkColor = Color.Black;
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Bahnschrift SemiBold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel1.LinkColor = Color.FromArgb(51, 153, 255);
+            linkLabel1.LinkColor = Color.FromArgb(218, 182, 73);
             linkLabel1.Location = new Point(131, 646);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(306, 22);
@@ -413,7 +413,7 @@
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(478, 420);
+            pictureBox8.Location = new Point(478, 421);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(34, 29);
             pictureBox8.SizeMode = PictureBoxSizeMode.CenterImage;

@@ -78,7 +78,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(51, 153, 255);
+            button1.BackColor = Color.FromArgb(218, 182, 73);
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -103,7 +103,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(51, 153, 255);
+            panel4.BackColor = Color.FromArgb(218, 182, 73);
             panel4.Location = new Point(31, 241);
             panel4.Name = "panel4";
             panel4.Size = new Size(473, 2);
@@ -113,7 +113,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.MenuHighlight;
+            label1.ForeColor = Color.FromArgb(218, 182, 73);
             label1.Location = new Point(98, 121);
             label1.Name = "label1";
             label1.Size = new Size(322, 45);
@@ -135,7 +135,7 @@
             linkLabel2.ActiveLinkColor = Color.Black;
             linkLabel2.AutoSize = true;
             linkLabel2.Font = new Font("Bahnschrift SemiBold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel2.LinkColor = Color.FromArgb(51, 153, 255);
+            linkLabel2.LinkColor = Color.FromArgb(218, 182, 73);
             linkLabel2.Location = new Point(198, 362);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(117, 22);
