@@ -25,12 +25,20 @@ namespace PersonalInventoryManagement.PL
             _userRepository = new UserRepository();
         }
 
+
+        #region Go to Login
+
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
+
+        #endregion
+
+
+        #region Forgit Password buton
 
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -50,7 +58,7 @@ namespace PersonalInventoryManagement.PL
                 var code = await emailRepository.SendEmailAsync(_user);
                 MessageBox.Show("Code is sanded to your email address", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                VerifyCode verifyCode = new VerifyCode(code,_user);
+                VerifyCode verifyCode = new VerifyCode(code, _user);
                 verifyCode.ShowDialog();
             }
             else
@@ -59,5 +67,27 @@ namespace PersonalInventoryManagement.PL
                 label4.Text = "This email is not exist in the system, enter valid email";
             }
         }
+
+        #endregion
+
+
+        #region Close
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
+
+
+        #region Minimized
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
     }
 }

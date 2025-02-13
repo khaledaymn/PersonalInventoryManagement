@@ -1,4 +1,5 @@
-﻿using PersonalInventoryManagement.BL.Helper;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using PersonalInventoryManagement.BL.Helper;
 using PersonalInventoryManagement.BL.Interface;
 using PersonalInventoryManagement.BL.Repository;
 using PersonalInventoryManagement.DAL.DataBase;
@@ -21,19 +22,24 @@ namespace PersonalInventoryManagement.PL
     public partial class Categories : Form
     {
         private readonly ICategoryRepository _categoryRepository;
-        public Categories()
+        private readonly DAL.Entities.User _user;
+        public Categories(DAL.Entities.User user)
         {
             InitializeComponent();
             _categoryRepository = new CategoryRepository();
+            _user = user;
         }
 
         #region Form Load
 
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
+            label1.Text = _user.Name.Split(" ")[0]+ " " +_user.Name.Split(" ")[1];
             txt_search.Padding = new Padding(20, 0, 0, 0);
             // Call LoadCategories when the form loads
             LoadCategories(_categoryRepository.GetAll().ToList());
+            panel1.Height = 0;
+            panel3.Height = 0;
         }
 
         #endregion
@@ -145,7 +151,7 @@ namespace PersonalInventoryManagement.PL
 
         bool sidebarExpand = true;
         int sidebarTargetWidth;
-        int step = 10; // Animation step size
+        int step = 15; // Animation step size
 
         // Define the two sizes and positions for the DataGridView
         Size expandedSize = new Size(605, 407);
@@ -265,7 +271,6 @@ namespace PersonalInventoryManagement.PL
         #endregion
 
 
-
         #region Add
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -379,11 +384,15 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
         #region Dashboard
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Dashboard dashboard = new Dashboard(_user);
+            dashboard.ShowDialog();
+            this.Close();
         }
 
 
@@ -393,7 +402,10 @@ namespace PersonalInventoryManagement.PL
         #region Products
         private void button4_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Products product = new Products(_user);
+            product.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -403,7 +415,10 @@ namespace PersonalInventoryManagement.PL
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Categories categories = new Categories(_user);
+            categories.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -413,7 +428,10 @@ namespace PersonalInventoryManagement.PL
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Reports reports = new Reports();
+            reports.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -423,7 +441,9 @@ namespace PersonalInventoryManagement.PL
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            ShowProfileFrm profileFrm = new ShowProfileFrm(_user);
+            profileFrm.ShowDialog();
         }
 
         #endregion
@@ -433,6 +453,9 @@ namespace PersonalInventoryManagement.PL
 
         private void button8_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Email = "";
+            Properties.Settings.Default.Psw = "";
+            Properties.Settings.Default.RememberMe = false;
             this.Hide();
             LoginForm login = new LoginForm();
             login.ShowDialog();
@@ -446,7 +469,7 @@ namespace PersonalInventoryManagement.PL
 
         bool isExpanded = false;
         int panelMaxHeight = 118;
-        int step1 = 5;
+        int step1 = 8;
         private void label1_Click(object sender, EventArgs e)
         {
             if (!timer2.Enabled)
@@ -473,8 +496,8 @@ namespace PersonalInventoryManagement.PL
             {
                 if (panel1.Height > 0)
                 {
-                    panel1.Height -= step;
-                    panel3.Height -= step;
+                    panel1.Height -= step1;
+                    panel3.Height -= step1;
                 }
                 else
                     timer2.Stop();
@@ -482,5 +505,50 @@ namespace PersonalInventoryManagement.PL
         }
 
         #endregion
+
+        //private void button3_MouseEnter(object sender, EventArgs e)
+        //{
+        //    button3.BackColor = Color.White;
+
+        //}
+
+        //private void button3_MouseLeave(object sender, EventArgs e)
+        //{
+        //    button3.BackColor = Color.Transparent;
+        //}
+
+        private void button4_MouseEnter(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.White;
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.Transparent;
+
+        }
+
+        private void button5_MouseEnter(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.White;
+
+        }
+
+        private void button5_MouseLeave(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.Transparent;
+
+        }
+
+        //private void button6_MouseEnter(object sender, EventArgs e)
+        //{
+        //    button6.BackColor = Color.White;
+
+        //}
+
+        //private void button6_MouseLeave(object sender, EventArgs e)
+        //{
+        //    button6.BackColor = Color.Transparent;
+        //}
     }
 }

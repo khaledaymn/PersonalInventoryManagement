@@ -25,5 +25,9 @@ namespace PersonalInventoryManagement.BL.Interface
         (bool IsExist, User user) EmailExist(string email);
 
         bool ResetPassword(string password,User user);
+
+        (bool IsExist, User user) Update(User user);
+
+        bool ChangePassword(User user, string oldPassword, string newPassword);
     }
 }

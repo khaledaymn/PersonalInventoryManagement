@@ -38,9 +38,7 @@
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             sidebar = new Panel();
             pictureBox2 = new PictureBox();
-            button6 = new Button();
             button4 = new Button();
-            button3 = new Button();
             button5 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             txt_search = new TextBox();
@@ -127,9 +125,7 @@
             // 
             sidebar.BackColor = Color.Black;
             sidebar.Controls.Add(pictureBox2);
-            sidebar.Controls.Add(button6);
             sidebar.Controls.Add(button4);
-            sidebar.Controls.Add(button3);
             sidebar.Controls.Add(button5);
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 40);
@@ -147,27 +143,6 @@
             pictureBox2.TabIndex = 30;
             pictureBox2.TabStop = false;
             // 
-            // button6
-            // 
-            button6.BackColor = Color.Black;
-            button6.BackgroundImageLayout = ImageLayout.None;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseDownBackColor = Color.White;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            button6.ForeColor = Color.FromArgb(218, 182, 73);
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(3, 458);
-            button6.Name = "button6";
-            button6.Padding = new Padding(15, 0, 0, 0);
-            button6.Size = new Size(258, 81);
-            button6.TabIndex = 7;
-            button6.Text = "       Reportes";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
-            // 
             // button4
             // 
             button4.BackColor = Color.Black;
@@ -179,7 +154,7 @@
             button4.ForeColor = Color.FromArgb(218, 182, 73);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(3, 296);
+            button4.Location = new Point(3, 255);
             button4.Name = "button4";
             button4.Padding = new Padding(15, 0, 0, 0);
             button4.Size = new Size(258, 81);
@@ -188,28 +163,8 @@
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Black;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(218, 182, 73);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.White;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            button3.ForeColor = Color.FromArgb(218, 182, 73);
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(3, 215);
-            button3.Name = "button3";
-            button3.Padding = new Padding(15, 0, 0, 0);
-            button3.Size = new Size(255, 81);
-            button3.TabIndex = 4;
-            button3.Text = "       Dashboard";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            button4.MouseEnter += button4_MouseEnter;
+            button4.MouseLeave += button4_MouseLeave;
             // 
             // button5
             // 
@@ -223,7 +178,7 @@
             button5.ForeColor = Color.FromArgb(218, 182, 73);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(3, 377);
+            button5.Location = new Point(3, 398);
             button5.Name = "button5";
             button5.Padding = new Padding(15, 0, 0, 0);
             button5.Size = new Size(255, 81);
@@ -232,6 +187,8 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
+            button5.MouseEnter += button5_MouseEnter;
+            button5.MouseLeave += button5_MouseLeave;
             // 
             // timer1
             // 
@@ -332,23 +289,25 @@
             // 
             label1.AutoSize = true;
             label1.Cursor = Cursors.Hand;
-            label1.Font = new Font("Segoe Script", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(741, 62);
+            label1.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label1.Location = new Point(755, 69);
             label1.Name = "label1";
-            label1.Size = new Size(155, 30);
+            label1.Size = new Size(131, 23);
             label1.TabIndex = 11;
             label1.Text = "Khaled Ayman";
+            label1.Click += label1_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Cursor = Cursors.Hand;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(691, 54);
+            pictureBox3.Location = new Point(703, 54);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(45, 46);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 10;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += label1_Click;
             // 
             // pictureBox4
             // 
@@ -361,13 +320,14 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += label1_Click;
             // 
             // panel3
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(button8);
             panel3.Controls.Add(button7);
-            panel3.Location = new Point(694, 105);
+            panel3.Location = new Point(702, 105);
             panel3.Name = "panel3";
             panel3.Size = new Size(210, 114);
             panel3.TabIndex = 16;
@@ -403,7 +363,7 @@
             // panel1
             // 
             panel1.BackColor = Color.Black;
-            panel1.Location = new Point(692, 103);
+            panel1.Location = new Point(700, 103);
             panel1.Name = "panel1";
             panel1.Size = new Size(214, 118);
             panel1.TabIndex = 15;
@@ -456,10 +416,8 @@
         private Button button2;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Panel sidebar;
-        private Button button3;
         private Button button4;
         private Button button5;
-        private Button button6;
         private PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
         private TextBox txt_search;

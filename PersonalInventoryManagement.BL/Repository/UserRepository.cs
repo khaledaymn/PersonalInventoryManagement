@@ -1,4 +1,5 @@
-﻿using PersonalInventoryManagement.BL.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using PersonalInventoryManagement.BL.Interface;
 using PersonalInventoryManagement.DAL.DataBase;
 using PersonalInventoryManagement.DAL.Entities;
 using System;
@@ -138,10 +139,84 @@ namespace PersonalInventoryManagement.BL.Repository
             }
         }
 
-        
+
+        #endregion
+
+
+        #region Update 
+
+        public (bool IsExist, User user) Update(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var existingUser = _context.Users.Find(user.Id);
+
+            if (existingUser == null)
+            {
+                return (false, null);
+            }
+
+            try
+            {
+                existingUser.Name = user.Name;
+                existingUser.Email = user.Email;
+                existingUser.Password = user.Password;
+                existingUser.UserName = user.UserName;
+                existingUser.ImageURL = user.ImageURL;
+
+                _context.SaveChanges();
+
+                return (true, existingUser);
+            }
+            catch (DbUpdateException ex)
+            {
+                return (false, null);
+            }
+            catch (Exception ex)
+            {
+                return (false, null);
+            }
+        }
+
+
+        #endregion
+
+
+        #region Change Password
+
+        public bool ChangePassword(User user, string oldPassword, string newPassword)
+        {
+            if (user == null)
+            {
+                return false; // User not found
+            }
+
+            // Verify old password
+            if (!VerifyPassword(oldPassword, user.Password))
+            {
+                return false; // Old password is incorrect
+            }
+
+            // Hash the new password
+            user.Password = HashPassword(newPassword);
+
+            try
+            {
+                _context.SaveChanges();
+                return true; // Password changed successfully
+            }
+            catch (Exception)
+            {
+                return false; // Error occurred during save
+            }
+        }
+
+        #endregion
     }
 
 
-    #endregion
 }
 

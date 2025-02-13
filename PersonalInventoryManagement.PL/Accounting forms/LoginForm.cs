@@ -99,10 +99,10 @@ namespace PersonalInventoryManagement.PL
                     Properties.Settings.Default.Save();
                 }
 
-
-                //this.Hide();
-                //MainForm mainForm = new MainForm();
-                //mainForm.Show();
+                this.Hide();
+                Products products = new Products(user);
+                products.ShowDialog();
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -113,11 +113,14 @@ namespace PersonalInventoryManagement.PL
         #endregion
 
 
+        #region Show Error Massages
+
         private void ShowErrorMessage(Label label, Panel panel, string message)
         {
             label.Text = message;
             panel.Visible = true;
         }
+        #endregion
 
 
         #region Text Changed Events
@@ -125,10 +128,12 @@ namespace PersonalInventoryManagement.PL
         {
             pictureBox7.Visible = true;
         }
-        
+
 
         #endregion
 
+
+        #region Registration
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -137,6 +142,10 @@ namespace PersonalInventoryManagement.PL
             registration.ShowDialog();
         }
 
+        #endregion
+
+
+        #region Forget Password
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -145,6 +154,10 @@ namespace PersonalInventoryManagement.PL
             forgetPassword.ShowDialog();
         }
 
+        #endregion
+
+
+        #region Form Load
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -157,6 +170,7 @@ namespace PersonalInventoryManagement.PL
                 checkBox1.Checked = true;
             }
         }
+        #endregion
 
 
         #region Encrypt password
@@ -166,7 +180,7 @@ namespace PersonalInventoryManagement.PL
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = Encoding.UTF8.GetBytes(key);
-                aesAlg.IV = new byte[16]; 
+                aesAlg.IV = new byte[16];
 
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
                 using (MemoryStream msEncrypt = new MemoryStream())
@@ -194,7 +208,7 @@ namespace PersonalInventoryManagement.PL
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = Encoding.UTF8.GetBytes(key);
-                aesAlg.IV = new byte[16]; 
+                aesAlg.IV = new byte[16];
 
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
                 using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(cipherText)))
@@ -213,6 +227,25 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
+        #region Close Application
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
+
+
+        #region Minimized 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
 
     }
 }

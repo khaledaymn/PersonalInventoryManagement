@@ -9,6 +9,7 @@ namespace PersonalInventoryManagement.PL
 {
     public partial class Registration : Form
     {
+        private bool isPasswordVisible = false;
         private readonly IUserRepository _userRepository;
         public Registration()
         {
@@ -21,12 +22,18 @@ namespace PersonalInventoryManagement.PL
             _userRepository = new UserRepository();
         }
 
+
+        #region Login
+
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
+
+        #endregion
+
 
         #region Register Button Click
 
@@ -67,7 +74,7 @@ namespace PersonalInventoryManagement.PL
                 this.Hide();
                 LoginForm loginForm = new LoginForm();
                 loginForm.ShowDialog();
-
+                this.Close();
                 ClearFields();
             }
             catch (Exception ex)
@@ -313,32 +320,58 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
+        #region Show / hide password
+
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            pictureBox7.Visible = false;
-            pictureBox8.Visible = true;
-            txt_password.PasswordChar = '\0';
+            TogglePasswordVisibility(txt_password, pictureBox7, pictureBox8, true);
         }
 
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            pictureBox8.Visible= false;
-            pictureBox7.Visible= true;
-            txt_password.PasswordChar = '*';
+            TogglePasswordVisibility(txt_password, pictureBox7, pictureBox8, false);
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
-            pictureBox9.Visible= false;
-            pictureBox10.Visible= true;
-            txt_confirmpassword.PasswordChar = '*';
+            TogglePasswordVisibility(txt_confirmpassword, pictureBox10, pictureBox9, false);
         }
 
         private void pictureBox10_Click(object sender, EventArgs e)
         {
-            pictureBox9.Visible = true;
-            pictureBox10.Visible = false;
-            txt_confirmpassword.PasswordChar = '\0';
+            TogglePasswordVisibility(txt_confirmpassword, pictureBox10, pictureBox9, true);
         }
+
+        private void TogglePasswordVisibility(TextBox textpass,PictureBox Show,PictureBox Hide,bool showPassword)
+        {
+            isPasswordVisible = false;
+            isPasswordVisible = showPassword;
+            textpass.PasswordChar = showPassword ? '\0' : '*';
+            Show.Visible = !showPassword;
+            Hide.Visible = showPassword;
+        }
+
+        #endregion
+
+
+        #region Close Application
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
+
+
+        #region Minimized
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        #endregion
     }
 }

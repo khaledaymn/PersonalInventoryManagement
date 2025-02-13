@@ -19,6 +19,7 @@ namespace PersonalInventoryManagement.PL
 
         private void Reports_Load(object sender, EventArgs e)
         {
+           
             PopulateDataGridView(); // تجهيز الجدول
             AddSampleData(); // إضافة بيانات تجريبية
             StyleDataGridView(); // تحسين تصميم الجدول
@@ -130,7 +131,15 @@ namespace PersonalInventoryManagement.PL
             dataGridView1.RowHeadersVisible = false;
         }
 
+        private void label1_Click_1(object sender, EventArgs e)
+        {
 
+        }
 
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            var categoryId = (int)comboBox1.SelectedValue;
+            //var
+        }
     }
 }

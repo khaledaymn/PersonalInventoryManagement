@@ -14,5 +14,9 @@ namespace PersonalInventoryManagement.BL.Interface
         bool Delete(int id);
         IEnumerable<Product> GetAll();
         IEnumerable<Product> Filter(Func<Product, bool> criteria);
+        int ProductsCount();
+        int Good();
+        int ExpireSoon();
+        int Expired();
     }
 }

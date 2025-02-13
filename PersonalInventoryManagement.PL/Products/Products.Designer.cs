@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Products));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel2 = new Panel();
             button2 = new Button();
             btn_menu = new PictureBox();
@@ -38,9 +38,7 @@
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             sidebar = new Panel();
             pictureBox2 = new PictureBox();
-            button6 = new Button();
             button4 = new Button();
-            button3 = new Button();
             button5 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             txt_search = new TextBox();
@@ -127,9 +125,7 @@
             // 
             sidebar.BackColor = Color.Black;
             sidebar.Controls.Add(pictureBox2);
-            sidebar.Controls.Add(button6);
             sidebar.Controls.Add(button4);
-            sidebar.Controls.Add(button3);
             sidebar.Controls.Add(button5);
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 40);
@@ -147,28 +143,6 @@
             pictureBox2.TabIndex = 30;
             pictureBox2.TabStop = false;
             // 
-            // button6
-            // 
-            button6.BackColor = Color.Black;
-            button6.BackgroundImageLayout = ImageLayout.None;
-            button6.Cursor = Cursors.Hand;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatAppearance.MouseDownBackColor = Color.White;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            button6.ForeColor = Color.FromArgb(218, 182, 73);
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(3, 458);
-            button6.Name = "button6";
-            button6.Padding = new Padding(15, 0, 0, 0);
-            button6.Size = new Size(258, 81);
-            button6.TabIndex = 7;
-            button6.Text = "       Reportes";
-            button6.TextAlign = ContentAlignment.MiddleLeft;
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
-            // 
             // button4
             // 
             button4.BackColor = Color.Black;
@@ -182,7 +156,7 @@
             button4.ForeColor = Color.FromArgb(218, 182, 73);
             button4.Image = (Image)resources.GetObject("button4.Image");
             button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.Location = new Point(3, 296);
+            button4.Location = new Point(3, 255);
             button4.Name = "button4";
             button4.Padding = new Padding(15, 0, 0, 0);
             button4.Size = new Size(255, 81);
@@ -191,29 +165,8 @@
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
             button4.Click += button4_Click;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.Black;
-            button3.BackgroundImageLayout = ImageLayout.None;
-            button3.Cursor = Cursors.Hand;
-            button3.FlatAppearance.BorderColor = Color.FromArgb(218, 182, 73);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.White;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            button3.ForeColor = Color.FromArgb(218, 182, 73);
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.Location = new Point(3, 215);
-            button3.Name = "button3";
-            button3.Padding = new Padding(15, 0, 0, 0);
-            button3.Size = new Size(255, 81);
-            button3.TabIndex = 4;
-            button3.Text = "       Dashboard";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            button4.MouseEnter += button4_MouseEnter;
+            button4.MouseLeave += button4_MouseLeave;
             // 
             // button5
             // 
@@ -228,7 +181,7 @@
             button5.ForeColor = Color.FromArgb(218, 182, 73);
             button5.Image = (Image)resources.GetObject("button5.Image");
             button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.Location = new Point(3, 377);
+            button5.Location = new Point(3, 398);
             button5.Name = "button5";
             button5.Padding = new Padding(15, 0, 0, 0);
             button5.Size = new Size(255, 81);
@@ -237,6 +190,8 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
+            button5.MouseEnter += button5_MouseEnter;
+            button5.MouseLeave += button5_MouseLeave;
             // 
             // timer1
             // 
@@ -287,8 +242,8 @@
             dataGridView1.Location = new Point(286, 188);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Size = new Size(656, 407);
             dataGridView1.TabIndex = 6;
             // 
@@ -471,10 +426,8 @@
         private Button button2;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Panel sidebar;
-        private Button button3;
         private Button button4;
         private Button button5;
-        private Button button6;
         private PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
         private TextBox txt_search;

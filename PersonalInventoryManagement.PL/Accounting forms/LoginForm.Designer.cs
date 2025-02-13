@@ -48,6 +48,9 @@
             pictureBox1 = new PictureBox();
             checkBox1 = new CheckBox();
             linkLabel2 = new LinkLabel();
+            panel2 = new Panel();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
@@ -55,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox7
@@ -124,7 +128,7 @@
             txt_password.BackColor = Color.White;
             txt_password.BorderStyle = BorderStyle.None;
             txt_password.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_password.ForeColor = Color.FromArgb(51, 153, 255);
+            txt_password.ForeColor = Color.Black;
             txt_password.Location = new Point(62, 318);
             txt_password.Multiline = true;
             txt_password.Name = "txt_password";
@@ -154,7 +158,7 @@
             txt_email.BackColor = Color.White;
             txt_email.BorderStyle = BorderStyle.None;
             txt_email.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_email.ForeColor = Color.FromArgb(51, 153, 255);
+            txt_email.ForeColor = Color.Black;
             txt_email.Location = new Point(62, 229);
             txt_email.Multiline = true;
             txt_email.Name = "txt_email";
@@ -225,7 +229,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(218, 182, 73);
-            label1.Location = new Point(204, 143);
+            label1.Location = new Point(204, 165);
             label1.Name = "label1";
             label1.Size = new Size(117, 45);
             label1.TabIndex = 30;
@@ -234,7 +238,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(210, 19);
+            pictureBox1.Location = new Point(210, 41);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(123, 103);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -268,12 +272,49 @@
             linkLabel2.Text = "Forget Password";
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(button3);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(539, 40);
+            panel2.TabIndex = 58;
+            // 
+            // button2
+            // 
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Center;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(439, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(44, 37);
+            button2.TabIndex = 60;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Center;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(492, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(44, 37);
+            button3.TabIndex = 59;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(520, 590);
+            ClientSize = new Size(539, 590);
+            Controls.Add(panel2);
             Controls.Add(linkLabel2);
             Controls.Add(checkBox1);
             Controls.Add(pictureBox7);
@@ -306,6 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -330,5 +372,8 @@
         private PictureBox pictureBox1;
         private CheckBox checkBox1;
         private LinkLabel linkLabel2;
+        private Panel panel2;
+        private Button button2;
+        private Button button3;
     }
 }

@@ -30,7 +30,7 @@ namespace PersonalInventoryManagement.PL
             _user = user;
             _categoryRepository = new CategoryRepository();
             _productRepository = new ProductRepository();
-            
+
         }
 
 
@@ -38,6 +38,7 @@ namespace PersonalInventoryManagement.PL
 
         private void CategoriesForm_Load(object sender, EventArgs e)
         {
+            label1.Text = _user.Name.Split(" ")[0] + " " + _user.Name.Split(" ")[1];
             txt_search.Padding = new Padding(20, 0, 0, 0);
             // Call LoadCategories when the form loads
             LoadProducts(_productRepository.GetAll().ToList());
@@ -401,7 +402,10 @@ namespace PersonalInventoryManagement.PL
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Dashboard dashboard = new Dashboard(_user);
+            dashboard.ShowDialog();
+            this.Close();
         }
 
 
@@ -411,7 +415,10 @@ namespace PersonalInventoryManagement.PL
         #region Products
         private void button4_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Products product = new Products(_user);
+            product.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -421,7 +428,10 @@ namespace PersonalInventoryManagement.PL
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Categories categories = new Categories(_user);
+            categories.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -431,7 +441,10 @@ namespace PersonalInventoryManagement.PL
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Reports reports = new Reports();
+            reports.ShowDialog();
+            this.Close();
         }
 
         #endregion
@@ -441,7 +454,9 @@ namespace PersonalInventoryManagement.PL
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            ShowProfileFrm profileFrm = new ShowProfileFrm(_user);
+            profileFrm.ShowDialog();
         }
 
         #endregion
@@ -451,6 +466,9 @@ namespace PersonalInventoryManagement.PL
 
         private void button8_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.Email = "";
+            Properties.Settings.Default.Psw = "";
+            Properties.Settings.Default.RememberMe = false;
             this.Hide();
             LoginForm login = new LoginForm();
             login.ShowDialog();
@@ -463,11 +481,11 @@ namespace PersonalInventoryManagement.PL
         #region Open profile window
 
         bool isExpanded = false;
-        int panelMaxHeight = 118; 
-        int step1 = 5; 
+        int panelMaxHeight = 118;
+        int step1 = 5;
         private void label1_Click(object sender, EventArgs e)
         {
-            if (!timer2.Enabled) 
+            if (!timer2.Enabled)
             {
                 isExpanded = !isExpanded;
                 timer2.Start();
@@ -481,7 +499,7 @@ namespace PersonalInventoryManagement.PL
                 if (panel1.Height < panelMaxHeight)
                 {
                     panel1.Height += step1;
-                    if(panel3.Height <= 114)
+                    if (panel3.Height <= 114)
                         panel3.Height += step1;
                 }
                 else
@@ -491,8 +509,8 @@ namespace PersonalInventoryManagement.PL
             {
                 if (panel1.Height > 0)
                 {
-                    panel1.Height -= step;
-                    panel3.Height -= step;
+                    panel1.Height -= step1;
+                    panel3.Height -= step1;
                 }
                 else
                     timer2.Stop();
@@ -501,6 +519,51 @@ namespace PersonalInventoryManagement.PL
 
         #endregion
 
+
+        //private void button3_MouseEnter(object sender, EventArgs e)
+        //{
+        //    button3.BackColor = Color.White;
+
+        //}
+
+        //private void button3_MouseLeave(object sender, EventArgs e)
+        //{
+        //    button3.BackColor = Color.Transparent;
+        //}
+
+        private void button4_MouseEnter(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.White;
+        }
+
+        private void button4_MouseLeave(object sender, EventArgs e)
+        {
+            button4.BackColor = Color.Transparent;
+
+        }
+
+        private void button5_MouseEnter(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.White;
+
+        }
+
+        private void button5_MouseLeave(object sender, EventArgs e)
+        {
+            button5.BackColor = Color.Transparent;
+
+        }
+
+        //private void button6_MouseEnter(object sender, EventArgs e)
+        //{
+        //    button6.BackColor = Color.White;
+
+        //}
+
+        //private void button6_MouseLeave(object sender, EventArgs e)
+        //{
+        //    button6.BackColor = Color.Transparent;
+        //}
     }
 
 }

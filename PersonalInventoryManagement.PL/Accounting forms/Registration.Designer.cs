@@ -63,6 +63,9 @@
             pictureBox8 = new PictureBox();
             pictureBox9 = new PictureBox();
             pictureBox10 = new PictureBox();
+            panel12 = new Panel();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -78,12 +81,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            panel12.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(223, 12);
+            pictureBox1.Location = new Point(223, 45);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(123, 103);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -95,7 +99,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Bauhaus 93", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(218, 182, 73);
-            label1.Location = new Point(198, 136);
+            label1.Location = new Point(198, 169);
             label1.Name = "label1";
             label1.Size = new Size(172, 45);
             label1.TabIndex = 1;
@@ -104,7 +108,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(45, 291);
+            pictureBox2.Location = new Point(45, 324);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(25, 25);
             pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -114,7 +118,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(45, 215);
+            pictureBox3.Location = new Point(45, 248);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(25, 25);
             pictureBox3.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -124,7 +128,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(45, 356);
+            pictureBox4.Location = new Point(45, 389);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(25, 25);
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -134,7 +138,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(45, 425);
+            pictureBox5.Location = new Point(45, 458);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(25, 25);
             pictureBox5.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -143,7 +147,7 @@
             // 
             // panel1
             // 
-            panel1.Location = new Point(26, 257);
+            panel1.Location = new Point(26, 290);
             panel1.Name = "panel1";
             panel1.Size = new Size(236, 1);
             panel1.TabIndex = 6;
@@ -151,7 +155,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(218, 182, 73);
-            panel2.Location = new Point(45, 249);
+            panel2.Location = new Point(45, 282);
             panel2.Name = "panel2";
             panel2.Size = new Size(473, 2);
             panel2.TabIndex = 7;
@@ -159,7 +163,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(218, 182, 73);
-            panel3.Location = new Point(45, 322);
+            panel3.Location = new Point(45, 355);
             panel3.Name = "panel3";
             panel3.Size = new Size(473, 2);
             panel3.TabIndex = 8;
@@ -167,7 +171,7 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(218, 182, 73);
-            panel4.Location = new Point(45, 387);
+            panel4.Location = new Point(45, 420);
             panel4.Name = "panel4";
             panel4.Size = new Size(473, 2);
             panel4.TabIndex = 9;
@@ -175,7 +179,7 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(218, 182, 73);
-            panel5.Location = new Point(45, 456);
+            panel5.Location = new Point(45, 489);
             panel5.Name = "panel5";
             panel5.Size = new Size(473, 2);
             panel5.TabIndex = 10;
@@ -183,7 +187,7 @@
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(218, 182, 73);
-            panel6.Location = new Point(45, 529);
+            panel6.Location = new Point(45, 562);
             panel6.Name = "panel6";
             panel6.Size = new Size(473, 2);
             panel6.TabIndex = 12;
@@ -191,7 +195,7 @@
             // pictureBox6
             // 
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(45, 498);
+            pictureBox6.Location = new Point(45, 531);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(25, 25);
             pictureBox6.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -205,7 +209,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Bahnschrift", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(142, 577);
+            button1.Location = new Point(142, 610);
             button1.Name = "button1";
             button1.Size = new Size(284, 43);
             button1.TabIndex = 13;
@@ -219,7 +223,7 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Font = new Font("Bahnschrift SemiBold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkLabel1.LinkColor = Color.FromArgb(218, 182, 73);
-            linkLabel1.Location = new Point(131, 646);
+            linkLabel1.Location = new Point(131, 679);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(306, 22);
             linkLabel1.TabIndex = 14;
@@ -232,8 +236,8 @@
             txt_Name.BackColor = Color.White;
             txt_Name.BorderStyle = BorderStyle.None;
             txt_Name.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_Name.ForeColor = Color.FromArgb(51, 153, 255);
-            txt_Name.Location = new Point(76, 215);
+            txt_Name.ForeColor = Color.Black;
+            txt_Name.Location = new Point(76, 248);
             txt_Name.Multiline = true;
             txt_Name.Name = "txt_Name";
             txt_Name.PlaceholderText = "Full Name";
@@ -246,8 +250,8 @@
             txt_username.BackColor = Color.White;
             txt_username.BorderStyle = BorderStyle.None;
             txt_username.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_username.ForeColor = Color.FromArgb(51, 153, 255);
-            txt_username.Location = new Point(76, 287);
+            txt_username.ForeColor = Color.Black;
+            txt_username.Location = new Point(76, 320);
             txt_username.Multiline = true;
             txt_username.Name = "txt_username";
             txt_username.PlaceholderText = "User Name";
@@ -260,8 +264,8 @@
             txt_email.BackColor = Color.White;
             txt_email.BorderStyle = BorderStyle.None;
             txt_email.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_email.ForeColor = Color.FromArgb(51, 153, 255);
-            txt_email.Location = new Point(76, 353);
+            txt_email.ForeColor = Color.Black;
+            txt_email.Location = new Point(76, 386);
             txt_email.Multiline = true;
             txt_email.Name = "txt_email";
             txt_email.PlaceholderText = "Email";
@@ -274,8 +278,8 @@
             txt_password.BackColor = Color.White;
             txt_password.BorderStyle = BorderStyle.None;
             txt_password.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_password.ForeColor = Color.FromArgb(51, 153, 255);
-            txt_password.Location = new Point(76, 421);
+            txt_password.ForeColor = Color.Black;
+            txt_password.Location = new Point(76, 454);
             txt_password.Multiline = true;
             txt_password.Name = "txt_password";
             txt_password.PasswordChar = '*';
@@ -289,8 +293,8 @@
             txt_confirmpassword.BackColor = Color.White;
             txt_confirmpassword.BorderStyle = BorderStyle.None;
             txt_confirmpassword.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txt_confirmpassword.ForeColor = Color.FromArgb(51, 153, 255);
-            txt_confirmpassword.Location = new Point(76, 494);
+            txt_confirmpassword.ForeColor = Color.Black;
+            txt_confirmpassword.Location = new Point(76, 527);
             txt_confirmpassword.Multiline = true;
             txt_confirmpassword.Name = "txt_confirmpassword";
             txt_confirmpassword.PasswordChar = '*';
@@ -302,7 +306,7 @@
             // panel7
             // 
             panel7.Controls.Add(label2);
-            panel7.Location = new Point(45, 253);
+            panel7.Location = new Point(45, 286);
             panel7.Name = "panel7";
             panel7.Size = new Size(473, 27);
             panel7.TabIndex = 20;
@@ -334,7 +338,7 @@
             // panel8
             // 
             panel8.Controls.Add(label3);
-            panel8.Location = new Point(45, 325);
+            panel8.Location = new Point(45, 358);
             panel8.Name = "panel8";
             panel8.Size = new Size(473, 26);
             panel8.TabIndex = 21;
@@ -354,7 +358,7 @@
             // panel9
             // 
             panel9.Controls.Add(label4);
-            panel9.Location = new Point(45, 390);
+            panel9.Location = new Point(45, 423);
             panel9.Name = "panel9";
             panel9.Size = new Size(473, 29);
             panel9.TabIndex = 22;
@@ -362,7 +366,7 @@
             // panel10
             // 
             panel10.Controls.Add(label5);
-            panel10.Location = new Point(45, 460);
+            panel10.Location = new Point(45, 493);
             panel10.Name = "panel10";
             panel10.Size = new Size(473, 29);
             panel10.TabIndex = 23;
@@ -382,7 +386,7 @@
             // panel11
             // 
             panel11.Controls.Add(label6);
-            panel11.Location = new Point(45, 532);
+            panel11.Location = new Point(45, 565);
             panel11.Name = "panel11";
             panel11.Size = new Size(473, 29);
             panel11.TabIndex = 24;
@@ -402,7 +406,7 @@
             // pictureBox7
             // 
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(478, 421);
+            pictureBox7.Location = new Point(478, 454);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(34, 29);
             pictureBox7.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -413,7 +417,7 @@
             // pictureBox8
             // 
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(478, 421);
+            pictureBox8.Location = new Point(478, 454);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(34, 29);
             pictureBox8.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -424,7 +428,7 @@
             // pictureBox9
             // 
             pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
-            pictureBox9.Location = new Point(478, 493);
+            pictureBox9.Location = new Point(478, 526);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(34, 29);
             pictureBox9.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -435,7 +439,7 @@
             // pictureBox10
             // 
             pictureBox10.Image = (Image)resources.GetObject("pictureBox10.Image");
-            pictureBox10.Location = new Point(478, 493);
+            pictureBox10.Location = new Point(478, 526);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(34, 29);
             pictureBox10.SizeMode = PictureBoxSizeMode.CenterImage;
@@ -443,12 +447,49 @@
             pictureBox10.TabStop = false;
             pictureBox10.Click += pictureBox10_Click;
             // 
+            // panel12
+            // 
+            panel12.Controls.Add(button2);
+            panel12.Controls.Add(button3);
+            panel12.Dock = DockStyle.Top;
+            panel12.Location = new Point(0, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(563, 40);
+            panel12.TabIndex = 59;
+            // 
+            // button2
+            // 
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Center;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(461, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(44, 37);
+            button2.TabIndex = 60;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Center;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(514, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(44, 37);
+            button3.TabIndex = 59;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Registration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(563, 695);
+            ClientSize = new Size(563, 728);
+            Controls.Add(panel12);
             Controls.Add(pictureBox10);
             Controls.Add(pictureBox9);
             Controls.Add(pictureBox8);
@@ -502,6 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            panel12.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -542,5 +584,8 @@
         private PictureBox pictureBox8;
         private PictureBox pictureBox9;
         private PictureBox pictureBox10;
+        private Panel panel12;
+        private Button button2;
+        private Button button3;
     }
 }

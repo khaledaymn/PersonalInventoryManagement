@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonalInventoryManagement.DAL.DataBase;
 
@@ -11,9 +12,11 @@ using PersonalInventoryManagement.DAL.DataBase;
 namespace PersonalInventoryManagement.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class AppicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250210155533_SeedingDataProducts")]
+    partial class SeedingDataProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,138 +200,6 @@ namespace PersonalInventoryManagement.DAL.Migrations
                             Name = "Dumbbells Set",
                             Price = 99.99m,
                             Quantity = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1000,
-                            CategoryId = 100,
-                            ExpireDate = new DateTime(2028, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/1.jpg",
-                            Name = "Laptop",
-                            Price = 1500.99m,
-                            Quantity = 3,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1010,
-                            CategoryId = 100,
-                            ExpireDate = new DateTime(2027, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/2.jpg",
-                            Name = "Smartphone",
-                            Price = 799.99m,
-                            Quantity = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1020,
-                            CategoryId = 101,
-                            ExpireDate = new DateTime(2025, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/3.jpg",
-                            Name = "T-Shirt",
-                            Price = 19.99m,
-                            Quantity = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1030,
-                            CategoryId = 101,
-                            ExpireDate = new DateTime(2026, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/4.jpg",
-                            Name = "Jeans",
-                            Price = 39.99m,
-                            Quantity = 3,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1040,
-                            CategoryId = 102,
-                            ExpireDate = new DateTime(2029, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/5.jpg",
-                            Name = "Washing Machine",
-                            Price = 499.99m,
-                            Quantity = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1050,
-                            CategoryId = 102,
-                            ExpireDate = new DateTime(2030, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/6.jpg",
-                            Name = "Refrigerator",
-                            Price = 899.99m,
-                            Quantity = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1060,
-                            CategoryId = 103,
-                            ExpireDate = new DateTime(2025, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/7.jpg",
-                            Name = "Fiction Novel",
-                            Price = 12.99m,
-                            Quantity = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1070,
-                            CategoryId = 104,
-                            ExpireDate = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/8.jpg",
-                            Name = "Children's Toy Car",
-                            Price = 25.99m,
-                            Quantity = 3,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1080,
-                            CategoryId = 105,
-                            ExpireDate = new DateTime(2025, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/9.jpg",
-                            Name = "Basketball",
-                            Price = 29.99m,
-                            Quantity = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1090,
-                            CategoryId = 106,
-                            ExpireDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/10.jpg",
-                            Name = "Dumbbells Set",
-                            Price = 99.99m,
-                            Quantity = 1,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1100,
-                            CategoryId = 101,
-                            ExpireDate = new DateTime(2025, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/11.jpg",
-                            Name = "Running Shoes",
-                            Price = 49.99m,
-                            Quantity = 2,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 1200,
-                            CategoryId = 103,
-                            ExpireDate = new DateTime(2025, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageURL = "Images/Products/12.jpg",
-                            Name = "Winter Jacket",
-                            Price = 89.99m,
-                            Quantity = 3,
                             UserId = 1
                         });
                 });

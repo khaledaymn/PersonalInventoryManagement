@@ -93,6 +93,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 26;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += label1_Click_1;
             // 
             // label1
             // 
@@ -104,6 +105,7 @@
             label1.Size = new Size(131, 23);
             label1.TabIndex = 25;
             label1.Text = "Khaled Ayman";
+            label1.Click += label1_Click_1;
             // 
             // pictureBox3
             // 
@@ -115,6 +117,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 24;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += label1_Click_1;
             // 
             // timer1
             // 
@@ -398,6 +401,7 @@
             btn_search.TabIndex = 50;
             btn_search.Text = "Search";
             btn_search.UseVisualStyleBackColor = true;
+            btn_search.Click += btn_search_Click;
             // 
             // pictureBox1
             // 

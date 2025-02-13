@@ -33,9 +33,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
@@ -66,7 +63,10 @@
             label6 = new Label();
             label5 = new Label();
             pictureBox7 = new PictureBox();
-            chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel4 = new Panel();
+            button8 = new Button();
+            button7 = new Button();
+            panel5 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -80,7 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chart2).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // sqlCommand1
@@ -96,6 +96,7 @@
             // timer2
             // 
             timer2.Interval = 10;
+            timer2.Tick += timer2_Tick;
             // 
             // pictureBox4
             // 
@@ -108,6 +109,7 @@
             pictureBox4.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox4.TabIndex = 26;
             pictureBox4.TabStop = false;
+            pictureBox4.Click += label1_Click;
             // 
             // label1
             // 
@@ -119,6 +121,7 @@
             label1.Size = new Size(131, 23);
             label1.TabIndex = 25;
             label1.Text = "Khaled Ayman";
+            label1.Click += label1_Click;
             // 
             // pictureBox3
             // 
@@ -130,6 +133,7 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 24;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += label1_Click;
             // 
             // timer3
             // 
@@ -165,6 +169,9 @@
             button6.Text = "       Reportes";
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            button6.MouseEnter += button6_MouseEnter;
+            button6.MouseLeave += button6_MouseLeave;
             // 
             // button4
             // 
@@ -187,6 +194,9 @@
             button4.Text = "       Products";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            button4.MouseEnter += button4_MouseEnter;
+            button4.MouseLeave += button4_MouseLeave;
             // 
             // button3
             // 
@@ -209,6 +219,9 @@
             button3.Text = "       Dashboard";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            button3.MouseEnter += button3_MouseEnter;
+            button3.MouseLeave += button3_MouseLeave;
             // 
             // button5
             // 
@@ -231,6 +244,9 @@
             button5.Text = "       Categories";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            button5.MouseEnter += button5_MouseEnter;
+            button5.MouseLeave += button5_MouseLeave;
             // 
             // sidebar
             // 
@@ -243,7 +259,7 @@
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 40);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(261, 567);
+            sidebar.Size = new Size(70, 567);
             sidebar.TabIndex = 16;
             // 
             // sqlCommand2
@@ -262,9 +278,11 @@
             button2.Size = new Size(44, 37);
             button2.TabIndex = 3;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // btn_menu
             // 
+            btn_menu.Cursor = Cursors.Hand;
             btn_menu.Image = (Image)resources.GetObject("btn_menu.Image");
             btn_menu.Location = new Point(8, 2);
             btn_menu.Name = "btn_menu";
@@ -272,6 +290,7 @@
             btn_menu.SizeMode = PictureBoxSizeMode.CenterImage;
             btn_menu.TabIndex = 2;
             btn_menu.TabStop = false;
+            btn_menu.Click += btn_menu_Click;
             // 
             // button1
             // 
@@ -284,6 +303,7 @@
             button1.Size = new Size(44, 37);
             button1.TabIndex = 2;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -295,6 +315,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1204, 40);
             panel2.TabIndex = 15;
+            panel2.MouseDown += panel2_MouseDown;
             // 
             // panel1
             // 
@@ -306,9 +327,9 @@
             panel1.Controls.Add(pictureBox5);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(274, 60);
+            panel1.Location = new Point(106, 62);
             panel1.Name = "panel1";
-            panel1.Size = new Size(599, 219);
+            panel1.Size = new Size(777, 219);
             panel1.TabIndex = 27;
             // 
             // chart1
@@ -359,7 +380,6 @@
             label3.Size = new Size(238, 25);
             label3.TabIndex = 4;
             label3.Text = "Products Expiring Soon";
-            label3.Click += label3_Click;
             // 
             // pictureBox5
             // 
@@ -408,7 +428,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(206, 13);
+            label6.Location = new Point(228, 13);
             label6.Name = "label6";
             label6.Size = new Size(65, 32);
             label6.TabIndex = 30;
@@ -435,29 +455,59 @@
             pictureBox7.TabIndex = 29;
             pictureBox7.TabStop = false;
             // 
-            // chart2
+            // panel4
             // 
-            chart2.BackColor = Color.LightGray;
-            chartArea2.Name = "ChartArea1";
-            chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chart2.Legends.Add(legend2);
-            chart2.Location = new Point(274, 305);
-            chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chart2.Series.Add(series2);
-            chart2.Size = new Size(913, 290);
-            chart2.TabIndex = 29;
-            chart2.Text = "chart2";
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(button8);
+            panel4.Controls.Add(button7);
+            panel4.Location = new Point(981, 112);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(210, 114);
+            panel4.TabIndex = 35;
+            // 
+            // button8
+            // 
+            button8.Cursor = Cursors.Hand;
+            button8.FlatAppearance.BorderColor = Color.Black;
+            button8.FlatAppearance.BorderSize = 3;
+            button8.FlatStyle = FlatStyle.Flat;
+            button8.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button8.Location = new Point(2, 59);
+            button8.Name = "button8";
+            button8.Size = new Size(205, 46);
+            button8.TabIndex = 16;
+            button8.Text = "Log Out";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Cursor = Cursors.Hand;
+            button7.FlatAppearance.BorderColor = Color.Black;
+            button7.FlatAppearance.BorderSize = 3;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Bold);
+            button7.Location = new Point(2, 7);
+            button7.Name = "button7";
+            button7.Size = new Size(205, 46);
+            button7.TabIndex = 15;
+            button7.Text = "profile";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.Black;
+            panel5.Location = new Point(979, 110);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(214, 118);
+            panel5.TabIndex = 34;
             // 
             // Dashboard
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             ClientSize = new Size(1204, 607);
-            Controls.Add(chart2);
+            Controls.Add(panel4);
+            Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(pictureBox4);
@@ -469,7 +519,7 @@
             Name = "Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CategoriesForm";
-            Load += CategoriesForm_Load;
+            Load += DashboardForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -485,7 +535,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chart2).EndInit();
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -521,6 +571,9 @@
         private Label label6;
         private Label label5;
         private PictureBox pictureBox7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private Panel panel4;
+        private Button button8;
+        private Button button7;
+        private Panel panel5;
     }
 }

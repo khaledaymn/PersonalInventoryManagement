@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using PersonalInventoryManagement.BL.Helper;
 using PersonalInventoryManagement.BL.Interface;
 using PersonalInventoryManagement.DAL.DataBase;
 using PersonalInventoryManagement.DAL.Entities;
@@ -14,10 +17,11 @@ namespace PersonalInventoryManagement.BL.Repository
     {
 
         private readonly ApplicationDbContext _context;
-
+        private readonly SqlConnection _con;
         public ProductRepository()
         {
             _context = new ApplicationDbContext();
+            _con = DapperHelper.ConnectionString();
         }
 
         #region Add
@@ -130,6 +134,39 @@ namespace PersonalInventoryManagement.BL.Repository
         }
 
         #endregion
+
+
+        #region Count
+
+        public int ProductsCount()
+        {
+            var count = _con.ExecuteScalar<int>("select count(*) from products");
+            return count;
+        }
+
+        #endregion
+
+
+        public int Good()
+        {
+            return _con.ExecuteScalar<int>("SELECT COUNT(*) FROM products WHERE ExpireDate >= @Date",
+                new { Date = DateTime.Now.AddMonths(1) });
+        }
+
+
+        public int ExpireSoon()
+        {
+            return _con.ExecuteScalar<int>("SELECT COUNT(*) FROM products WHERE ExpireDate < @Date1 AND ExpireDate >= @Date2",
+                new { Date1 = DateTime.Now.AddMonths(1), Date2 = DateTime.Now });
+        }
+
+
+        public int Expired()
+        {
+            return _con.ExecuteScalar<int>("SELECT COUNT(*) FROM products WHERE ExpireDate < @Date",
+                new { Date = DateTime.Now });
+        }
+
 
 
     }
